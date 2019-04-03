@@ -35,7 +35,7 @@ function forms(){
 
     function popupAfterClose() {
         popupsAfterClose.forEach(item => {
-            item.style.display = "none";
+            item.classList.remove('show');
         });
     }
     popupTnanksClose.addEventListener("click", () => {

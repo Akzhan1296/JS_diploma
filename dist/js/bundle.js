@@ -1687,7 +1687,7 @@ function forms() {
 
   function popupAfterClose() {
     popupsAfterClose.forEach(function (item) {
-      item.style.display = "none";
+      item.classList.remove('show');
     });
   }
 
