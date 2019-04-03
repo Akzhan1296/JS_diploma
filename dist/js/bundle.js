@@ -2034,6 +2034,9 @@ function popups() {
       giftPopup.classList.add("show");
       giftPopup.classList.add("fadeIn");
       animation();
+      setTimeout(function () {
+        document.body.removeChild(giftBtn);
+      }, 2500);
       clicked = true;
     }
   }); // close popups
