@@ -1675,6 +1675,16 @@ function forms() {
     startAjax(formCons);
   }); //thanks popup
 
+  var designBtnBlock = document.getElementsByTagName("body")[0];
+  designBtnBlock.addEventListener("click", function (event) {
+    var target = event.target;
+
+    if (target && target.classList.contains("show")) {
+      target.classList.remove('show');
+      document.body.style.overflow = '';
+    }
+  });
+
   function popupAfterClose() {
     popupsAfterClose.forEach(function (item) {
       item.style.display = "none";
@@ -1688,53 +1698,15 @@ function forms() {
 
   nameChecking.forEach(function (item) {
     item.addEventListener("keyup", function () {
-      console.log(this.value);
-      var reg = /[а-яА-ЯёЁ]/; // только цифры /\D/
-
-      if (reg.test(this.value || this.value == "")) {
-        console.log("верный формат");
-      } else {
-        console.log("неверный формат");
-        this.value = "";
-        alert("Введите только кирилицу ");
-      }
+      this.value = this.value.replace(/[^А-Яа-яЁё ]/g, "");
     });
   }); //mask
 
-  var mask = document.querySelectorAll(".mask"),
-      old = 0;
+  var mask = document.querySelectorAll('.mask');
   mask.forEach(function (item) {
-    item.addEventListener("click", function () {
-      if (this.value.length < 1) {
-        this.value = "+";
-      }
-    });
-    item.addEventListener("keyup", function () {
-      var curLen = this.value.length;
-
-      if (curLen < old) {
-        old--;
-        return;
-      }
-
-      if (curLen == 2) {
-        this.value = this.value + "(";
-      }
-
-      if (curLen == 6) {
-        this.value = this.value + ")-";
-      }
-
-      if (curLen == 11) {
-        this.value = this.value + "-";
-      }
-
-      if (curLen == 14) {
-        this.value = this.value + "-";
-      }
-
-      if (curLen > 17) {
-        this.value = this.value.substring(0, this.value.length - 1); // old++;
+    item.addEventListener('keyup', function () {
+      if (/(^(8|\+7)\d{0,10}|^\+\d{0,11})$/.test(this.value)) {} else {
+        this.value = '';
       }
     });
   });
