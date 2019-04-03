@@ -1769,6 +1769,46 @@ module.exports = forms;
 
 /***/ }),
 
+/***/ "./src/js/parts/hover.js":
+/*!*******************************!*\
+  !*** ./src/js/parts/hover.js ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function hovers() {
+  //наведение
+  function hover() {
+    console.log("123");
+    var sizesBlocks = document.getElementsByClassName("sizes-block"),
+        imgs = document.querySelectorAll(".sizes-block img");
+
+    var _loop = function _loop(i) {
+      var divsSizes = sizesBlocks[i].getElementsByTagName('p');
+      sizesBlocks[i].addEventListener("mouseover", function () {
+        for (var _i = 0; _i < divsSizes.length; _i++) {
+          divsSizes[_i].style.display = "none";
+        }
+      });
+      sizesBlocks[i].addEventListener("mouseout", function () {
+        for (var _i2 = 0; _i2 < divsSizes.length; _i2++) {
+          divsSizes[_i2].style.display = "block";
+        }
+      });
+    };
+
+    for (var i = 0; i < sizesBlocks.length; i++) {
+      _loop(i);
+    }
+  }
+
+  hover();
+}
+
+module.exports = hovers;
+
+/***/ }),
+
 /***/ "./src/js/parts/img_filters.js":
 /*!*************************************!*\
   !*** ./src/js/parts/img_filters.js ***!
@@ -2169,6 +2209,7 @@ window.addEventListener('DOMContentLoaded', function () {
       form = __webpack_require__(/*! ./parts/form */ "./src/js/parts/form.js"),
       popup = __webpack_require__(/*! ./parts/popups */ "./src/js/parts/popups.js"),
       slider = __webpack_require__(/*! ./parts/sliders */ "./src/js/parts/sliders.js"),
+      hover = __webpack_require__(/*! ./parts/hover */ "./src/js/parts/hover.js"),
       filter = __webpack_require__(/*! ./parts/img_filters */ "./src/js/parts/img_filters.js");
 
   accordion();
@@ -2177,6 +2218,7 @@ window.addEventListener('DOMContentLoaded', function () {
   popup();
   slider();
   filter();
+  hover();
 });
 
 if ('NodeList' in window && !NodeList.prototype.forEach) {

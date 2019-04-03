@@ -8,6 +8,7 @@ window.addEventListener('DOMContentLoaded', () => {
         form = require('./parts/form'),
         popup = require('./parts/popups'),
         slider = require('./parts/sliders'),
+        hover = require('./parts/hover'),
         filter = require('./parts/img_filters');
 
     accordion();
@@ -16,6 +17,7 @@ window.addEventListener('DOMContentLoaded', () => {
     popup();
     slider();
     filter();
+    hover();
 });
 if ('NodeList' in window && !NodeList.prototype.forEach) {
     console.info('polyfill for IE11');
