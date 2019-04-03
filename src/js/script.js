@@ -9,6 +9,7 @@ window.addEventListener('DOMContentLoaded', () => {
         popup = require('./parts/popups'),
         slider = require('./parts/sliders'),
         hover = require('./parts/hover'),
+        burger = require('./parts/burger'),
         filter = require('./parts/img_filters');
 
     accordion();
@@ -16,6 +17,7 @@ window.addEventListener('DOMContentLoaded', () => {
     form();
     popup();
     slider();
+    burger();
     filter();
     hover();
 });

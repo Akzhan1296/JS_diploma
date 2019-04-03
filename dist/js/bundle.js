@@ -1586,6 +1586,32 @@ module.exports = accordion;
 
 /***/ }),
 
+/***/ "./src/js/parts/burger.js":
+/*!********************************!*\
+  !*** ./src/js/parts/burger.js ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function checkBurgerMenu() {
+  var burger = document.querySelector('.burger'),
+      burgerMenu = document.querySelector('.burger-menu'),
+      width = document.documentElement.clientWidth;
+  burger.addEventListener('click', function () {
+    if (width <= 768) {
+      if (burgerMenu.classList.contains('show')) {
+        burgerMenu.classList.remove('show');
+      } else {
+        burgerMenu.classList.add('show');
+      }
+    }
+  });
+}
+
+module.exports = checkBurgerMenu;
+
+/***/ }),
+
 /***/ "./src/js/parts/calc.js":
 /*!******************************!*\
   !*** ./src/js/parts/calc.js ***!
@@ -2210,6 +2236,7 @@ window.addEventListener('DOMContentLoaded', function () {
       popup = __webpack_require__(/*! ./parts/popups */ "./src/js/parts/popups.js"),
       slider = __webpack_require__(/*! ./parts/sliders */ "./src/js/parts/sliders.js"),
       hover = __webpack_require__(/*! ./parts/hover */ "./src/js/parts/hover.js"),
+      burger = __webpack_require__(/*! ./parts/burger */ "./src/js/parts/burger.js"),
       filter = __webpack_require__(/*! ./parts/img_filters */ "./src/js/parts/img_filters.js");
 
   accordion();
@@ -2217,6 +2244,7 @@ window.addEventListener('DOMContentLoaded', function () {
   form();
   popup();
   slider();
+  burger();
   filter();
   hover();
 });
