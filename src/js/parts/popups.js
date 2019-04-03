@@ -10,7 +10,11 @@ function popups() {
 
     designBtnBlock.addEventListener("click", event => {
         let target = event.target;
-
+        if (target && target.classList.contains("show")) {
+            target.classList.remove('show');
+            document.body.style.overflow = '';
+        }
+        
         if (
             target &&
             (target.classList.contains("button-design") ||
@@ -24,7 +28,7 @@ function popups() {
 
         if (target && target.classList.contains("button-design")) {
             console.log("works");
-            popupDesign.style.display = "block";
+            popupDesign.classList.add("show");
             popupDesign.classList.add("fadeIn");
         } //popup-design
 
@@ -33,33 +37,33 @@ function popups() {
         } //popup-consulting
 
         if (target && target.classList.contains("fixed-gift")) {
-            giftPopup.style.display = "block";
+            giftPopup.classList.add("show");
             giftPopup.classList.add("fadeIn");
             animation();
             setTimeout(() => {
                 document.body.removeChild(giftBtn);
             }, 2500);
         } // gift-btn
+
+
     });
 
     function cons() {
-        consaltingPopup.style.display = "block";
+        consaltingPopup.classList.add("show");
         consaltingPopup.classList.add("fadeIn");
         document.body.style.overflow = "hidden";
         clicked = true;
     } //consalting
 
     //Анимация для кнопки gift-fixed
-    let giftBtn = document.querySelector(".fixed-gift");
 
+    let giftBtn = document.querySelector(".fixed-gift");
     function animation() {
         let opac = 1;
         let f = setInterval(frame, 250);
-
         function frame() {
             if (opac == 0) {
                 clearInterval();
-
             } else {
                 opac = opac - 0.5;
                 giftBtn.style.opacity = opac;
@@ -68,13 +72,14 @@ function popups() {
     }
 
     // //popup-scroll
+
     window.addEventListener("scroll", event => {
         let clientHeight = document.documentElement.clientHeight,
             documentHeight = document.documentElement.scrollHeight,
             scrollTop = window.pageYOffset;
         if (documentHeight - clientHeight <= scrollTop && clicked == false) {
             console.log("кнопки не нажаты");
-            giftPopup.style.display = "block";
+            giftPopup.classList.add("show");
             giftPopup.classList.add("fadeIn");
             animation();
             clicked = true;
@@ -86,11 +91,11 @@ function popups() {
 
     popupClose.forEach(function (item) {
         item.addEventListener("click", () => {
-            consaltingPopup.style.display = "none";
+            consaltingPopup.classList.remove("show");
             consaltingPopup.classList.remove("fadeIn"); // popup-consulting
-            giftPopup.style.display = "none";
+            giftPopup.classList.remove("show");
             giftPopup.classList.remove("fadeIn"); // popup-gift
-            popupDesign.style.display = "none";
+            popupDesign.classList.remove("show");
             popupDesign.classList.remove("fadeIn"); // popup-design
             document.body.style.overflow = "";
         });

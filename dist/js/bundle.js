@@ -1964,6 +1964,11 @@ function popups() {
   designBtnBlock.addEventListener("click", function (event) {
     var target = event.target;
 
+    if (target && target.classList.contains("show")) {
+      target.classList.remove('show');
+      document.body.style.overflow = '';
+    }
+
     if (target && (target.classList.contains("button-design") || target.classList.contains("button-consultation") || target.classList.contains("fixed-gift"))) {
       document.body.style.overflow = "hidden";
       clearTimeout(timerId);
@@ -1972,7 +1977,7 @@ function popups() {
 
     if (target && target.classList.contains("button-design")) {
       console.log("works");
-      popupDesign.style.display = "block";
+      popupDesign.classList.add("show");
       popupDesign.classList.add("fadeIn");
     } //popup-design
 
@@ -1983,7 +1988,7 @@ function popups() {
 
 
     if (target && target.classList.contains("fixed-gift")) {
-      giftPopup.style.display = "block";
+      giftPopup.classList.add("show");
       giftPopup.classList.add("fadeIn");
       animation();
       setTimeout(function () {
@@ -1994,7 +1999,7 @@ function popups() {
   });
 
   function cons() {
-    consaltingPopup.style.display = "block";
+    consaltingPopup.classList.add("show");
     consaltingPopup.classList.add("fadeIn");
     document.body.style.overflow = "hidden";
     clicked = true;
@@ -2026,7 +2031,7 @@ function popups() {
 
     if (documentHeight - clientHeight <= scrollTop && clicked == false) {
       console.log("кнопки не нажаты");
-      giftPopup.style.display = "block";
+      giftPopup.classList.add("show");
       giftPopup.classList.add("fadeIn");
       animation();
       clicked = true;
@@ -2036,13 +2041,13 @@ function popups() {
   var popupClose = document.querySelectorAll(".popup-close");
   popupClose.forEach(function (item) {
     item.addEventListener("click", function () {
-      consaltingPopup.style.display = "none";
+      consaltingPopup.classList.remove("show");
       consaltingPopup.classList.remove("fadeIn"); // popup-consulting
 
-      giftPopup.style.display = "none";
+      giftPopup.classList.remove("show");
       giftPopup.classList.remove("fadeIn"); // popup-gift
 
-      popupDesign.style.display = "none";
+      popupDesign.classList.remove("show");
       popupDesign.classList.remove("fadeIn"); // popup-design
 
       document.body.style.overflow = "";
