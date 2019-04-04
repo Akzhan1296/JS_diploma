@@ -10,6 +10,7 @@ window.addEventListener('DOMContentLoaded', () => {
         slider = require('./parts/sliders'),
         hover = require('./parts/hover'),
         burger = require('./parts/burger'),
+        mask = require('./parts/maskedInput'),
         filter = require('./parts/img_filters');
 
     accordion();
@@ -19,6 +20,7 @@ window.addEventListener('DOMContentLoaded', () => {
     slider();
     burger();
     filter();
+    mask();
     hover();
 });
 if ('NodeList' in window && !NodeList.prototype.forEach) {

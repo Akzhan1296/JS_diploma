@@ -51,18 +51,6 @@ function forms(){
         });
     });
 
-    //mask
-    let mask = document.querySelectorAll('.mask');
-    mask.forEach( function(item){
-        item.addEventListener('keyup', function(){
-            if(/(^(8|\+7)\d{0,10}|^\+\d{0,11})$/.test(this.value)){
-            } else {
-                this.value ='';
-            }
-        });
-    });
-
-
     function startAjax(name) {
         function json(name) {
             console.log("ajaxIsWorking");
