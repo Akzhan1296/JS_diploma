@@ -1758,7 +1758,7 @@ function forms() {
         var json = JSON.stringify(obj); //превращает обычный JS объект в JSON файл
 
         popupAnswer.classList.add("show");
-        popupAnswerImg.src = "/img/Preloader_4.gif";
+        popupAnswerImg.src = "img/Preloader_4.gif";
         popupAfterClose();
         console.log("загрузка");
         request.send(json);
@@ -1775,10 +1775,10 @@ function forms() {
     }
 
     json(name).then(function () {
-      popupAnswerImg.src = "/img/thanks.png";
+      popupAnswerImg.src = "img/thanks.png";
       console.log("спасибо");
     }).catch(function () {
-      popupAnswerImg.src = "/img/fail.png";
+      popupAnswerImg.src = "img/fail.png";
       console.log("Не удача");
     }).then(function () {
       cleanInputs();
