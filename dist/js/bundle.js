@@ -1746,6 +1746,10 @@ function forms() {
         });
         var json = JSON.stringify(obj); //превращает обычный JS объект в JSON файл
 
+        popupAnswer.classList.add("show");
+        popupAnswerImg.src = "/img/Preloader_4.gif";
+        popupAfterClose();
+        console.log("загрузка");
         request.send(json);
         request.addEventListener("readystatechange", function () {
           if (request.readyState < 4) {
@@ -1760,11 +1764,6 @@ function forms() {
     }
 
     json(name).then(function () {
-      popupAnswer.classList.add("show");
-      popupAnswerImg.src = "/img/Preloader_4.gif";
-      popupAfterClose();
-      console.log("загрузка");
-    }).then(function () {
       popupAnswerImg.src = "/img/thanks.png";
       console.log("спасибо");
     }).catch(function () {
@@ -1848,120 +1847,35 @@ function filters() {
       showImg(item);
       paintBtn.style.display = "none";
     });
-  }); //img-filter 
+  }); //img_filters
 
-  var portfolio = document.querySelector('.portfolio'),
-      // parent
-  portfolioImgs = document.querySelectorAll('.port_imgs'),
-      //btns-block
-  allWorks = document.querySelector('.all'),
-      //each-btn
-  lovers = document.querySelector('.lovers'),
-      //each-btn
-  chef = document.querySelector('.chef'),
-      //each-btn
-  girl = document.querySelector('.girl'),
-      //each-btn
-  guy = document.querySelector('.guy'),
-      //each-btn
-  grandMother = document.querySelector('.grandmother'),
-      //each-btn
-  grandFather = document.querySelector('.granddad'),
-      //each-btn
-  portfolioImgsBlock = document.querySelectorAll('.portfolio-block'),
-      //allImgs
-  portfolioNo = document.querySelector('.portfolio-no');
-  portfolio.addEventListener('click', function (event) {
-    var target = event.target;
+  var d = document,
+      tab = d.querySelectorAll('.portfolio-heading'),
+      tabContent = d.querySelectorAll('.portfolio-block'),
+      noElems = d.querySelector('.portfolio-no');
+  tab.forEach(function (btn) {
+    btn.addEventListener('click', function (event) {
+      var attr = event.target.dataset.btn;
+      tab.forEach(function (item) {
+        item.classList.remove('active');
+      });
+      this.classList.add('active');
+      console.log(attr);
+      tabContent.forEach(function (content, key) {
+        content.style.display = "block";
+        noElems.style.display = 'none';
 
-    function checkActiveBtns() {
-      if (target && (target == lovers || target == allWorks || target == chef || target == girl || target == guy || target == grandMother || target == grandFather)) {
-        portfolioImgs.forEach(function (item) {
-          item.classList.remove('active');
-        });
-        portfolioImgsBlock.forEach(function (item) {
-          item.style.display = 'none';
-          item.classList.remove("fadeIn");
-        });
-        portfolioNo.style.display = 'none';
-      }
-    }
-
-    function portfolioNoImgs() {
-      portfolioNo.style.display = 'block';
-      portfolioNo.classList.add('fadeIn');
-    }
-
-    if (target && target == lovers) {
-      checkActiveBtns(); //check Btn
-
-      lovers.classList.add('active'); // make Btn Active
-
-      portfolioImgsBlock.forEach(function (item) {
-        if (item.classList.contains('lovers')) {
-          showImg(item);
+        if (attr !== 'all') {
+          if (attr !== content.dataset.tab) {
+            content.style.display = "none";
+          }
         }
-      }); //filter img
-    } //lovers
 
-
-    if (target && target == allWorks) {
-      checkActiveBtns();
-      allWorks.classList.add('active');
-      portfolioImgsBlock.forEach(function (item) {
-        if (item.classList.contains('all')) {
-          showImg(item);
+        if (attr === 'grandmother' || attr === 'grandfather') {
+          noElems.style.display = 'block';
         }
-      }); //filter img
-    } //allWorks
-
-
-    if (target && target == chef) {
-      checkActiveBtns();
-      chef.classList.add('active');
-      portfolioImgsBlock.forEach(function (item) {
-        if (item.classList.contains('chef')) {
-          showImg(item);
-        }
-      }); //filter img
-    } // chef
-
-
-    if (target && target == girl) {
-      checkActiveBtns();
-      girl.classList.add('active');
-      portfolioImgsBlock.forEach(function (item) {
-        if (item.classList.contains('girl')) {
-          showImg(item);
-        }
-      }); //filter img
-    } //girl
-
-
-    if (target && target == guy) {
-      checkActiveBtns();
-      guy.classList.add('active');
-      portfolioImgsBlock.forEach(function (item) {
-        if (item.classList.contains('guy')) {
-          showImg(item);
-        }
-      }); //filter img
-    } //guy
-
-
-    if (target && target == grandMother) {
-      checkActiveBtns();
-      grandMother.classList.add('active');
-      portfolioNoImgs();
-    } //grandMother 
-
-
-    if (target && target == grandFather) {
-      checkActiveBtns();
-      grandFather.classList.add('active');
-      portfolioNoImgs();
-    } //grandFather
-
+      });
+    });
   });
 }
 

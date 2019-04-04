@@ -70,6 +70,10 @@ function forms(){
                     obj[key] = value;
                 });
                 let json = JSON.stringify(obj); //превращает обычный JS объект в JSON файл
+                popupAnswer.classList.add("show");
+                popupAnswerImg.src = "/img/Preloader_4.gif";
+                popupAfterClose();
+                console.log("загрузка");
 
                 request.send(json);
                 request.addEventListener("readystatechange", () => {
@@ -85,12 +89,6 @@ function forms(){
         }
 
         json(name)
-            .then(() => {
-                popupAnswer.classList.add("show");
-                popupAnswerImg.src = "/img/Preloader_4.gif";
-                popupAfterClose();
-                console.log("загрузка");
-            })
             .then(() => {
                 popupAnswerImg.src = "/img/thanks.png";
                 console.log("спасибо");
