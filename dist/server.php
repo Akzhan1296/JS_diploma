@@ -1,3 +1,7 @@
-<?php 
+<?php
+sleep(5);
 
-echo $_SERVER[‘REMOTE_ADDR‘];
+$obj = json_decode(implode("", file('php://input')));
+foreach($obj as $key=>$val) {
+    echo $key . ': ' . $val . '<br>';
+}
