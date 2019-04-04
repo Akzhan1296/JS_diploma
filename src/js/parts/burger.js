@@ -16,11 +16,13 @@ function checkBurgerMenu() {
             }
         });
         console.log(width);
-        if (width > 768) {
-            burgerMenu.classList.remove('show');
-        }
+        window.addEventListener('resize', function(){
+            if (width > 768) {
+                burgerMenu.classList.remove('show');
+            }
+        });
     }
-    setInterval(checkingCurrentWidth, 500);
+    checkingCurrentWidth();
 }
 
 module.exports = checkBurgerMenu;

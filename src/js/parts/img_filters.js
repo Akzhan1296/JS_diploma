@@ -40,7 +40,7 @@ tab.forEach((btn) => {
                     content.style.display = "none";
                 }
             }
-            if (attr === 'grandmother' || attr === 'grandfather') {
+            if (content.dataset.tab != 'grandmother' || content.dataset.tab!= 'grandfather') {
                 noElems.style.display = 'block';
             }
         });

@@ -31,7 +31,7 @@ function calcs(){
     });
 
     function calc() {
-        if (sizeValue > 0 && materialValue > 0) {
+        if (sizeValue > 0 && materialValue > 0 ) {
             total = sizeValue * materialValue * optionsValue;
             console.log(total);
             calcResult.innerHTML = total;

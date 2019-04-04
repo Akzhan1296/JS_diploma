@@ -9,7 +9,8 @@ function forms(){
         popupsAfterClose = document.querySelectorAll(".popup_ajax"),
         popupAnswerImg = document.querySelector(".popup-thanks__img"),
         popupTnanksClose = document.querySelector(".popup-thanks_close"),
-        nameChecking = document.querySelectorAll(".name-check");
+        nameChecking = document.querySelectorAll(".name-check"),
+        commentChecking = document.querySelectorAll(".com-check");
 
     form.addEventListener("submit", event => {
         startAjax(form);
@@ -48,6 +49,12 @@ function forms(){
     nameChecking.forEach(function (item) {
         item.addEventListener("keyup", function () {
             this.value = this.value.replace(/[^А-Яа-яЁё ]/g, "");
+        });
+    });
+    //comment
+    commentChecking.forEach(function (item) {
+        item.addEventListener("keyup", function () {
+            this.value = this.value.replace(/[^А-Яа-яЁё0-9!,.()-]/g, "");
         });
     });
 
