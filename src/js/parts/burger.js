@@ -1,25 +1,26 @@
-function checkBurgerMenu (){
+function checkBurgerMenu() {
+    //burger 
+
     let burger = document.querySelector('.burger'),
-        burgerMenu = document.querySelector('.burger-menu'),
-        width = document.documentElement.clientWidth;
-        
-        function checkingCurrentWidth(){
-            burger.addEventListener('click', ()=>{
-                if(width<=768){
-                    if(burgerMenu.classList.contains('show')){
-                        burgerMenu.classList.remove('show');
-                    } else {
-                        burgerMenu.classList.add('show');
-                    }
-                } 
-            });
+        burgerMenu = document.querySelector('.burger-menu');
 
-            if(width>768){
-                burgerMenu.classList.remove('show');
+    function checkingCurrentWidth() {
+        let width = document.documentElement.clientWidth;
+        burger.addEventListener('click', () => {
+            if (width <= 768) {
+                if (burgerMenu.classList.contains('show')) {
+                    burgerMenu.classList.remove('show');
+                } else {
+                    burgerMenu.classList.add('show');
+                }
             }
+        });
+        console.log(width);
+        if (width > 768) {
+            burgerMenu.classList.remove('show');
         }
-
-        checkingCurrentWidth();
+    }
+    setInterval(checkingCurrentWidth, 500);
 }
 
 module.exports = checkBurgerMenu;

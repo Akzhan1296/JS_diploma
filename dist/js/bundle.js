@@ -1594,11 +1594,12 @@ module.exports = accordion;
 /***/ (function(module, exports) {
 
 function checkBurgerMenu() {
+  //burger 
   var burger = document.querySelector('.burger'),
-      burgerMenu = document.querySelector('.burger-menu'),
-      width = document.documentElement.clientWidth;
+      burgerMenu = document.querySelector('.burger-menu');
 
   function checkingCurrentWidth() {
+    var width = document.documentElement.clientWidth;
     burger.addEventListener('click', function () {
       if (width <= 768) {
         if (burgerMenu.classList.contains('show')) {
@@ -1608,13 +1609,14 @@ function checkBurgerMenu() {
         }
       }
     });
+    console.log(width);
 
     if (width > 768) {
       burgerMenu.classList.remove('show');
     }
   }
 
-  checkingCurrentWidth();
+  setInterval(checkingCurrentWidth, 500);
 }
 
 module.exports = checkBurgerMenu;
